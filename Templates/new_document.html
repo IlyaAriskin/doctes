@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Новый документ</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='new_document.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Новый документ</h1>
+            <form method="POST">
+                <div>
+                    <label for="name">Название:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="content">Содержание:</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <button type="submit" class="button">Сохранить</button>
+            </form>
+            <a href="{{ url_for('index') }}" class="button-index">Главная</a>
+        </div>
+    </body>
+</html>

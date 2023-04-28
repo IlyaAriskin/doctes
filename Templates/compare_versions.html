@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Compare Versions</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='compare_versions.css') }}">
+    </head>
+    <body>
+        <h1>Сравнение версий</h1>
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Создан</th>
+            </tr>
+            <tr>
+                <td>Текущая версия</td>
+                <td>{{ document.created_at }}</td>
+            </tr>
+            <tr>
+                <td>Версия {{ version.name }}</td>
+                <td>{{ version.created_at }}</td>
+            </tr>
+        </table>
+        <br>
+        <div class="center">
+            <h2>Изменения:</h2>
+            <pre>{{ document.content|diff(version.content)|safe }}</pre>
+            <br>
+            <a href="{{ url_for('document_versions', document_id=document.id) }}" class="button">Назад</a>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>История версий</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='document_versions.css') }}">
+    </head>
+    <body>
+        <h1>История версий</h1>
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Изменение</th>
+                <th>Сравнение</th>
+            </tr>
+            {% for version in versions %}
+            <tr>
+                <td>{{ version.name }}</td>
+                                <td>{{ version.created_at }}</td>
+                <td><a href="{{ url_for('compare_versions', document_id=document.id, version_id=version.id) }}">Сравнить</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <div class="center">
+            <a href="{{ url_for('document', document_id=document.id) }}">Назад к документу</a>
+        </div>
+    </body>
+</html>
+

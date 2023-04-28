@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Главная</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Мои документы</h1>
+            <details>
+                <summary>Список документов</summary>
+                    <div>
+                         <ul>
+                            {% for document in documents %}
+                            <li><a href="{{ url_for('document', document_id=document.id) }}">{{ document.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+            </details>
+            <a href="{{ url_for('new_document') }}" class="button">Добавить новый документ</a>
+        </div>
+    </body>
+</html>
